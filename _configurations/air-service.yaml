@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    hikari:
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS "postgres_air";
+      schema: postgres_air
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: '{cipher}87a7a5c18f105c58f68238618b8fda5ba6651a90cd19f4317f61330b20fe29b4'
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: liquibase/changelog-master.xml
+    default-schema: postgres_air
+    enabled: true
+    liquibase-schema: postgres_air
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    #instance:
+    #  leaseRenewalIntervalInSeconds: 1
+    #  leaseExpirationDurationInSeconds: 2
+    #healthcheck:
+    #  enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/,http://localhost:8889/eureka/
